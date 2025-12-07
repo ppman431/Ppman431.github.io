@@ -1,0 +1,907 @@
+!DOCTYPE html
+html lang=en
+head
+  meta charset=UTF-8 
+  titleRoblox Scripting Portfolio - Ppman431title
+  meta name=viewport content=width=device-width, initial-scale=1.0 
+  meta name=description content=Roblox Scripter & Systems Developer Portfolio - Ppman431 (.bataman)
+  style
+    root {
+      --bg #05060a;
+      --bg-alt #0c0f15;
+      --card #111826;
+      --accent #4f46e5;
+      --accent-soft rgba(79, 70, 229, 0.2);
+      --text #e5e7eb;
+      --muted #9ca3af;
+      --border #1f2937;
+      --radius-lg 18px;
+      --radius-pill 999px;
+      --shadow-soft 0 18px 45px rgba(0, 0, 0, 0.55);
+    }
+
+     {
+      box-sizing border-box;
+      margin 0;
+      padding 0;
+    }
+
+    body {
+      font-family system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
+        sans-serif;
+      background radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      color var(--text);
+      line-height 1.6;
+    }
+
+    a {
+      color inherit;
+      text-decoration none;
+    }
+
+    img {
+      max-width 100%;
+      display block;
+    }
+
+    .page {
+      max-width 1120px;
+      margin 0 auto;
+      padding 32px 16px 64px;
+    }
+
+    header {
+      display flex;
+      align-items center;
+      justify-content space-between;
+      gap 16px;
+      margin-bottom 32px;
+    }
+
+    .logo {
+      display flex;
+      align-items center;
+      gap 12px;
+    }
+
+    .logo-icon {
+      width 40px;
+      height 40px;
+      border-radius 14px;
+      background radial-gradient(circle at 30% 20%, #818cf8, #4f46e5 40%, #1d2541 100%);
+      display flex;
+      align-items center;
+      justify-content center;
+      font-weight 800;
+      font-size 20px;
+      box-shadow 0 12px 28px rgba(15, 23, 42, 0.75);
+    }
+
+    .logo-text {
+      display flex;
+      flex-direction column;
+      gap 2px;
+    }
+
+    .logo-text-main {
+      font-weight 600;
+      letter-spacing 0.03em;
+    }
+
+    .logo-text-sub {
+      font-size 12px;
+      color var(--muted);
+    }
+
+    nav {
+      display flex;
+      gap 10px;
+      flex-wrap wrap;
+      justify-content flex-end;
+    }
+
+    nav a {
+      font-size 14px;
+      padding 6px 12px;
+      border-radius var(--radius-pill);
+      background transparent;
+      border 1px solid transparent;
+      color var(--muted);
+      transition 0.2s ease;
+    }
+
+    nav ahover {
+      color var(--text);
+      border-color var(--border);
+      background rgba(15, 23, 42, 0.8);
+    }
+
+    .hero {
+      display grid;
+      grid-template-columns minmax(0, 1.4fr) minmax(0, 1fr);
+      gap 32px;
+      align-items center;
+      margin-bottom 48px;
+    }
+
+    .hero-badge {
+      display inline-flex;
+      align-items center;
+      gap 8px;
+      padding 4px 10px;
+      border-radius var(--radius-pill);
+      background rgba(15, 23, 42, 0.9);
+      border 1px solid var(--border);
+      color var(--muted);
+      font-size 12px;
+      margin-bottom 14px;
+    }
+
+    .hero-badge-dot {
+      width 8px;
+      height 8px;
+      border-radius 999px;
+      background #22c55e;
+      box-shadow 0 0 10px rgba(34, 197, 94, 0.8);
+    }
+
+    .hero-title {
+      font-size clamp(30px, 4vw, 38px);
+      font-weight 700;
+      margin-bottom 10px;
+    }
+
+    .hero-title span {
+      color #a5b4fc;
+    }
+
+    .hero-subtitle {
+      font-size 15px;
+      color var(--muted);
+      max-width 480px;
+      margin-bottom 20px;
+    }
+
+    .hero-tags {
+      display flex;
+      flex-wrap wrap;
+      gap 8px;
+      margin-bottom 22px;
+    }
+
+    .hero-tag {
+      font-size 12px;
+      padding 4px 10px;
+      border-radius var(--radius-pill);
+      border 1px solid var(--border);
+      background rgba(15, 23, 42, 0.9);
+      color var(--muted);
+    }
+
+    .hero-actions {
+      display flex;
+      flex-wrap wrap;
+      gap 10px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      font-size 14px;
+      font-weight 500;
+      padding 9px 16px;
+      border-radius var(--radius-pill);
+      border 1px solid transparent;
+      cursor pointer;
+      display inline-flex;
+      align-items center;
+      gap 6px;
+      transition 0.2s ease;
+      background none;
+      color inherit;
+    }
+
+    .btn-primary {
+      background linear-gradient(135deg, #4f46e5, #6366f1);
+      border-color #4f46e5;
+      color #e5e7eb;
+      box-shadow 0 12px 30px rgba(79, 70, 229, 0.45);
+    }
+
+    .btn-primaryhover {
+      transform translateY(-1px);
+      box-shadow 0 18px 40px rgba(79, 70, 229, 0.6);
+    }
+
+    .btn-ghost {
+      border-color var(--border);
+      background rgba(15, 23, 42, 0.8);
+      color var(--muted);
+    }
+
+    .btn-ghosthover {
+      border-color #374151;
+      color var(--text);
+      background rgba(12, 17, 27, 0.9);
+    }
+
+    .hero-right {
+      background radial-gradient(circle at top left, var(--accent-soft), transparent 60%),
+        radial-gradient(circle at bottom right, #0b1120, #020617);
+      border-radius 24px;
+      border 1px solid #1e293b;
+      padding 18px;
+      box-shadow var(--shadow-soft);
+    }
+
+    .hero-right-inner {
+      border-radius 18px;
+      border 1px solid rgba(148, 163, 184, 0.3);
+      padding 16px 16px 18px;
+      background radial-gradient(circle at top, rgba(15, 23, 42, 0.85), #020617);
+      display flex;
+      flex-direction column;
+      gap 12px;
+    }
+
+    .hero-right-header {
+      display flex;
+      justify-content space-between;
+      align-items center;
+      font-size 12px;
+      color var(--muted);
+    }
+
+    .hero-right-pill {
+      padding 3px 9px;
+      border-radius var(--radius-pill);
+      border 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .hero-right-main {
+      display flex;
+      flex-direction column;
+      gap 10px;
+    }
+
+    .hero-right-title {
+      font-size 15px;
+      font-weight 600;
+    }
+
+    .hero-metrics {
+      display grid;
+      grid-template-columns repeat(3, minmax(0, 1fr));
+      gap 10px;
+      margin-top 4px;
+    }
+
+    .metric {
+      padding 10px 10px 9px;
+      border-radius 14px;
+      background rgba(15, 23, 42, 0.9);
+      border 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .metric-label {
+      font-size 11px;
+      color var(--muted);
+      margin-bottom 2px;
+    }
+
+    .metric-value {
+      font-size 15px;
+      font-weight 600;
+    }
+
+    .metric-sub {
+      font-size 11px;
+      color var(--muted);
+    }
+
+    .chip-row {
+      display flex;
+      flex-wrap wrap;
+      gap 6px;
+      margin-top 6px;
+    }
+
+    .chip {
+      font-size 11px;
+      padding 3px 8px;
+      border-radius var(--radius-pill);
+      border 1px solid rgba(55, 65, 81, 0.9);
+      color var(--muted);
+    }
+
+    main {
+      display flex;
+      flex-direction column;
+      gap 40px;
+    }
+
+    section {
+      padding 24px 20px;
+      border-radius 22px;
+      background rgba(9, 11, 19, 0.92);
+      border 1px solid rgba(15, 23, 42, 0.95);
+      box-shadow 0 16px 40px rgba(0, 0, 0, 0.65);
+    }
+
+    .section-header {
+      display flex;
+      justify-content space-between;
+      gap 12px;
+      margin-bottom 20px;
+      align-items flex-end;
+    }
+
+    .section-title {
+      font-size 18px;
+      font-weight 600;
+    }
+
+    .section-subtitle {
+      font-size 13px;
+      color var(--muted);
+    }
+
+    .pill-label {
+      font-size 11px;
+      color var(--muted);
+      padding 4px 9px;
+      border-radius var(--radius-pill);
+      border 1px solid rgba(55, 65, 81, 0.9);
+      background rgba(15, 23, 42, 0.9);
+    }
+
+    .grid-cards {
+      display grid;
+      grid-template-columns repeat(auto-fit, minmax(240px, 1fr));
+      gap 16px;
+    }
+
+    .card {
+      background linear-gradient(145deg, #020617, #020617 40%, #020617 100%);
+      border-radius var(--radius-lg);
+      border 1px solid rgba(31, 41, 55, 0.9);
+      padding 16px 15px 15px;
+      display flex;
+      flex-direction column;
+      gap 8px;
+      position relative;
+      overflow hidden;
+    }
+
+    .cardbefore {
+      content ;
+      position absolute;
+      inset 0;
+      background radial-gradient(circle at top left, rgba(79, 70, 229, 0.12), transparent 55%);
+      opacity 0;
+      pointer-events none;
+      transition 0.25s ease;
+    }
+
+    .cardhoverbefore {
+      opacity 1;
+    }
+
+    .card-header {
+      display flex;
+      align-items center;
+      justify-content space-between;
+      gap 8px;
+    }
+
+    .card-title {
+      font-size 15px;
+      font-weight 600;
+    }
+
+    .card-tag {
+      font-size 11px;
+      padding 3px 7px;
+      border-radius var(--radius-pill);
+      border 1px solid rgba(55, 65, 81, 0.9);
+      color var(--muted);
+    }
+
+    .card-desc {
+      font-size 13px;
+      color var(--muted);
+    }
+
+    .card-list {
+      list-style none;
+      font-size 13px;
+      color var(--muted);
+      margin-top 4px;
+    }
+
+    .card-list libefore {
+      content • ;
+      color #818cf8;
+    }
+
+    .code-snippet {
+      margin-top 6px;
+      border-radius 10px;
+      background #020617;
+      border 1px solid #111827;
+      padding 7px 9px;
+      font-family JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco,
+        Consolas, Liberation Mono, Courier New, monospace;
+      font-size 11px;
+      color #9ca3af;
+      overflow-x auto;
+    }
+
+    .skills-grid {
+      display grid;
+      grid-template-columns repeat(auto-fit, minmax(210px, 1fr));
+      gap 14px;
+    }
+
+    .skills-group-title {
+      font-size 13px;
+      font-weight 600;
+      margin-bottom 4px;
+      color #cbd5f5;
+    }
+
+    .skills-tags {
+      display flex;
+      flex-wrap wrap;
+      gap 6px;
+    }
+
+    .skill-pill {
+      font-size 12px;
+      padding 4px 9px;
+      border-radius var(--radius-pill);
+      border 1px solid rgba(55, 65, 81, 0.9);
+      background rgba(15, 23, 42, 0.95);
+      color var(--muted);
+    }
+
+    .services-list {
+      display grid;
+      grid-template-columns repeat(auto-fit, minmax(230px, 1fr));
+      gap 10px;
+      font-size 13px;
+      color var(--muted);
+    }
+
+    .services-list ul {
+      list-style none;
+    }
+
+    .services-list libefore {
+      content ▹ ;
+      color #818cf8;
+    }
+
+    .contact-block {
+      display flex;
+      flex-direction column;
+      gap 10px;
+      font-size 14px;
+    }
+
+    .contact-row {
+      display flex;
+      flex-wrap wrap;
+      gap 10px;
+    }
+
+    .contact-item {
+      padding 6px 11px;
+      border-radius var(--radius-pill);
+      border 1px solid rgba(55, 65, 81, 0.9);
+      background rgba(15, 23, 42, 0.95);
+      font-size 13px;
+      color var(--muted);
+    }
+
+    .contact-highlight {
+      color #e5e7eb;
+      font-weight 500;
+    }
+
+    footer {
+      margin-top 26px;
+      padding-top 14px;
+      border-top 1px solid rgba(31, 41, 55, 0.9);
+      font-size 12px;
+      color var(--muted);
+      display flex;
+      justify-content space-between;
+      gap 8px;
+      flex-wrap wrap;
+    }
+
+    @media (max-width 800px) {
+      header {
+        flex-direction column;
+        align-items flex-start;
+      }
+      nav {
+        justify-content flex-start;
+      }
+      .hero {
+        grid-template-columns minmax(0, 1fr);
+      }
+      .hero-right {
+        order -1;
+      }
+    }
+
+    html {
+      scroll-behavior smooth;
+    }
+  style
+head
+body
+  div class=page
+    header
+      div class=logo
+        div class=logo-iconPdiv
+        div class=logo-text
+          div class=logo-text-mainPpman431div
+          div class=logo-text-subRoblox Scripter · Systems Developerdiv
+        div
+      div
+      nav
+        a href=#aboutAbouta
+        a href=#projectsShowcasea
+        a href=#skillsSkillsa
+        a href=#servicesServicesa
+        a href=#contactContacta
+      nav
+    header
+
+    section class=hero id=about
+      div
+        div class=hero-badge
+          span class=hero-badge-dotspan
+          Open for commissions · Discord .bataman
+        div
+        h1 class=hero-title
+          Roblox spanScripterspan focused on clean, scalable gameplay systems.
+        h1
+        p class=hero-subtitle
+          I’m strongPpman431strong, a Roblox systems developer who builds smooth,
+          responsive mechanics for any genre – from boats and weapons to UI, AI, and
+          data systems. I care about performance, readability, and long-term scalability.
+        p
+        div class=hero-tags
+          span class=hero-tagLuau · Networkingspan
+          span class=hero-tagGameplay Systemsspan
+          span class=hero-tagVehicles & Weaponsspan
+          span class=hero-tagUI · Datastores · AIspan
+        div
+        div class=hero-actions
+          a href=#contact class=btn-primary
+            💬 Hire me
+          a
+          a href=#projects class=btn-ghost
+            🔍 View showcase
+          a
+        div
+      div
+
+      div class=hero-right
+        div class=hero-right-inner
+          div class=hero-right-header
+            span class=hero-right-pillGameplay Systems Snapshotspan
+            spanRoblox Studio · Luauspan
+          div
+          div class=hero-right-main
+            div class=hero-right-titleWhat I specialize indiv
+            p class=hero-subtitle style=margin 0;
+              Vehicles, combat, minimaps, underwater systems, and procedural mechanics –
+              all written with modular, production-ready code.
+            p
+            div class=hero-metrics
+              div class=metric
+                div class=metric-labelExperiencediv
+                div class=metric-value2+ yrsdiv
+                div class=metric-subRoblox scriptingdiv
+              div
+              div class=metric
+                div class=metric-labelFocusdiv
+                div class=metric-valueSystemsdiv
+                div class=metric-subVehicles · Combat · UIdiv
+              div
+              div class=metric
+                div class=metric-labelStylediv
+                div class=metric-valueCleandiv
+                div class=metric-subModular · Optimizeddiv
+              div
+            div
+            div class=chip-row
+              span class=chipRemoteEvents  RemoteFunctionsspan
+              span class=chipPhysics & Raycastingspan
+              span class=chipDatastores & Progressionspan
+              span class=chipUI & TweenServicespan
+            div
+          div
+        div
+      div
+    section
+
+    main
+      !-- Showcase --
+      section id=projects
+        div class=section-header
+          div
+            h2 class=section-titleShowcase Projectsh2
+            p class=section-subtitle
+              A selection of core systems I’ve built. Clips, demos, or test places can be
+              provided on request.
+            p
+          div
+          span class=pill-labelCore Systems · Gameplay · Networkingspan
+        div
+
+        div class=grid-cards
+          !-- Boat Controller --
+          article class=card
+            div class=card-header
+              h3 class=card-titleAdvanced Boat Controller Systemh3
+              span class=card-tagVehicles · Physicsspan
+            div
+            p class=card-desc
+              A physics-based boat controller with smooth steering, speed curves, and
+              buoyancy. Built for ocean  naval games that need responsive, controllable
+              boats instead of default Roblox behavior.
+            p
+            ul class=card-list
+              liUses BodyGyro + VectorForce for stable orientation & movementli
+              liConfigurable BoatStats module for acceleration, max speed & turningli
+              liServer-authoritative movement with client smoothingli
+            ul
+            pre class=code-snippetcodeBoat.BodyGyro.CFrame = CFrame.new(Boat.Position, Boat.Position + direction)
+Boat.Velocity = Boat.VelocityLerp(direction  speed, 0.1)codepre
+          article
+
+          !-- Minimap --
+          article class=card
+            div class=card-header
+              h3 class=card-titleMinimap With Fog-of-Warh3
+              span class=card-tagUI · Explorationspan
+            div
+            p class=card-desc
+              A minimap that reveals only explored areas, perfect for exploration or
+              survival games. Uses UI masks to smoothly uncover regions as the player
+              moves.
+            p
+            ul class=card-list
+              liChunk-based reveal system for performanceli
+              liFog-of-war using mask circles that expand over timeli
+              liLocal-only updates to reduce server loadli
+            ul
+            pre class=code-snippetcoderevealCircle.Size += UDim2.fromOffset(1, 1)
+maskGroupAddChild(revealCircle)codepre
+          article
+
+          !-- Weapon System --
+          article class=card
+            div class=card-header
+              h3 class=card-titleFlintlock  Weapon Systemh3
+              span class=card-tagCombat · Raycastingspan
+            div
+            p class=card-desc
+              A custom weapon system using raycasts for hitscan bullets, with reloads,
+              bloom, hit-effects, and server-side validation to prevent exploits.
+            p
+            ul class=card-list
+              liRaycast-based bullet firing with filter paramsli
+              liServer-side damage handling & anti-exploit checksli
+              liSupports reload animations, sounds, and UI cooldownsli
+            ul
+            pre class=code-snippetcodelocal result = workspaceRaycast(origin, direction  range, params)
+if result then
+    Remotes.DamageFireServer(result.Instance, damage)
+endcodepre
+          article
+
+          !-- Diving  Air Bar --
+          article class=card
+            div class=card-header
+              h3 class=card-titleDiving System + Air Barh3
+              span class=card-tagUnderwater · UIspan
+            div
+            p class=card-desc
+              An underwater mechanic that tracks air, applies drowning damage, and
+              animates an on-screen air bar. Automatically detects when the player is
+              in water.
+            p
+            ul class=card-list
+              liAir drain and recovery with adjustable difficultyli
+              liDrowning damage when air hits zeroli
+              liSmooth UI bar using TweenService or direct resizingli
+            ul
+            pre class=code-snippetcodeair = math.clamp(air - drainRate  dt, 0, maxAir)
+AirBar.Size = UDim2.new(air  maxAir, 0, 1, 0)codepre
+          article
+
+          !-- Wave Simulator --
+          article class=card
+            div class=card-header
+              h3 class=card-titleDynamic Wave Simulatorh3
+              span class=card-tagProcedural · Environmentspan
+            div
+            p class=card-desc
+              A lightweight wave system that makes water surfaces feel alive and can
+              interact with boats or floating objects.
+            p
+            ul class=card-list
+              liSin  cos based vertical displacementli
+              liConfigurable height, speed, and wind offsetli
+              liWorks alongside boat physics for more immersive oceansli
+            ul
+            pre class=code-snippetcodepart.Position = base + Vector3.new(0, math.sin(t + offset)  height, 0)codepre
+          article
+
+          !-- Extra Systems Slot --
+          article class=card
+            div class=card-header
+              h3 class=card-titleAdditional Systemsh3
+              span class=card-tagFlexible · Customspan
+            div
+            p class=card-desc
+              I also build custom systems for specific game ideas – such as quest
+              lines, shop UIs, progression systems, and more.
+            p
+            ul class=card-list
+              liQuest & dialogue systemsli
+              liShops, currencies, and upgradesli
+              liSimulator-style mechanics (energy, pets, rebirth, etc.)li
+            ul
+            p class=card-desc style=margin-top 4px;
+              Have a specific system in mind I can design and script it from scratch.
+            p
+          article
+        div
+      section
+
+      !-- Skills --
+      section id=skills
+        div class=section-header
+          div
+            h2 class=section-titleTechnical Skillsh2
+            p class=section-subtitle
+              The tools, services, and techniques I use to build reliable Roblox systems.
+            p
+          div
+          span class=pill-labelClean code · Optimization · Scalabilityspan
+        div
+
+        div class=skills-grid
+          div
+            div class=skills-group-titleCore Scriptingdiv
+            div class=skills-tags
+              span class=skill-pillLuauspan
+              span class=skill-pillModuleScripts · OOPspan
+              span class=skill-pillRemoteEvents  RemoteFunctionsspan
+              span class=skill-pillServer  Client separationspan
+            div
+          div
+          div
+            div class=skills-group-titleGameplay & Systemsdiv
+            div class=skills-tags
+              span class=skill-pillVehicle Controllersspan
+              span class=skill-pillWeapons & Combatspan
+              span class=skill-pillMinimaps & UI systemsspan
+              span class=skill-pillUnderwater & Environmentspan
+            div
+          div
+          div
+            div class=skills-group-titleRoblox Servicesdiv
+            div class=skills-tags
+              span class=skill-pillDataStore systemsspan
+              span class=skill-pillTweenServicespan
+              span class=skill-pillPathfindingServicespan
+              span class=skill-pillRaycasting & Physicsspan
+            div
+          div
+          div
+            div class=skills-group-titleOther Strengthsdiv
+            div class=skills-tags
+              span class=skill-pillOptimization & debuggingspan
+              span class=skill-pillModular architecturespan
+              span class=skill-pillScalable for live gamesspan
+              span class=skill-pillTeam communicationspan
+            div
+          div
+        div
+      section
+
+      !-- Services --
+      section id=services
+        div class=section-header
+          div
+            h2 class=section-titleWhat I Can Build For Your Gameh2
+            p class=section-subtitle
+              From single systems to full core gameplay loops, I can help bring your
+              ideas to life in Roblox Studio.
+            p
+          div
+          span class=pill-labelCustom systems · Commission-basedspan
+        div
+
+        div class=services-list
+          ul
+            liGun & melee weapon systemsli
+            liSpecial abilities & cooldown systemsli
+            liVehicle controllers (boats, cars, aircraft)li
+            liTools, mining, and harvesting systemsli
+          ul
+          ul
+            liMinimaps, compasses, and radar UIsli
+            liInventory, currencies, and datastoresli
+            liShop, upgrades, and progression systemsli
+            liSimulator mechanics (energy, pets, rebirths)li
+          ul
+          ul
+            liNPCs with pathfinding & combat AIli
+            liQuest, dialogue, and mission systemsli
+            liProcedural environment features (waves, terrain)li
+            liCore systems for full game projectsli
+          ul
+        div
+      section
+
+      !-- Contact --
+      section id=contact
+        div class=section-header
+          div
+            h2 class=section-titleContact & Availabilityh2
+            p class=section-subtitle
+              Ready to talk about a system or a project The fastest way to reach me is
+              through Discord.
+            p
+          div
+          span class=pill-labelOpen for commissionsspan
+        div
+
+        div class=contact-block
+          div class=contact-row
+            div class=contact-item
+              Roblox&nbsp;
+              span class=contact-highlightPpman431span
+            div
+            div class=contact-item
+              Discord&nbsp;
+              span class=contact-highlight.batamanspan
+            div
+          div
+          p
+            When you contact me, feel free to share
+          p
+          ul class=card-list style=margin-left 4px;
+            liA short description of your game or system ideali
+            liAny references, examples, or similar games you likeli
+            liYour timeline and budget range if you have oneli
+          ul
+          p class=section-subtitle style=margin-top 8px;
+            I’m happy to start with a small system or test piece first, then expand
+            into larger projects once you’re confident in my work.
+          p
+        div
+      section
+    main
+
+    footer
+      span© span id=yearspan Ppman431 · Roblox Scripterspan
+      spanBuilt with Roblox Studio, Luau, and a lot of late nights.span
+    footer
+  div
+
+  script
+     Set current year in footer
+    document.getElementById(year).textContent = new Date().getFullYear();
+  script
+body
+html
